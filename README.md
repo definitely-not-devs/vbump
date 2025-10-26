@@ -72,14 +72,14 @@ Create a `vbump.json` file in your project root:
 
 ### Configuration Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `branches.source` | `string` | `"develop"` | Source branch where version bump occurs |
-| `branches.targets` | `string[]` | `["UAT"]` | Target branches to merge changes into |
-| `commitMessageTemplate` | `string` | `"build: {version}"` | Commit message template (use `{version}` as placeholder) |
-| `packageFile` | `string` | `"package.json"` | Path to package file |
-| `createTag` | `boolean` | `true` | Create git tag for the version |
-| `tagPrefix` | `string` | `"v"` | Prefix for git tags (e.g., "v" creates "v1.2.3") |
+| Option                  | Type       | Default              | Description                                              |
+| ----------------------- | ---------- | -------------------- | -------------------------------------------------------- |
+| `branches.source`       | `string`   | `"develop"`          | Source branch where version bump occurs                  |
+| `branches.targets`      | `string[]` | `["UAT"]`            | Target branches to merge changes into                    |
+| `commitMessageTemplate` | `string`   | `"build: {version}"` | Commit message template (use `{version}` as placeholder) |
+| `packageFile`           | `string`   | `"package.json"`     | Path to package file                                     |
+| `createTag`             | `boolean`  | `true`               | Create git tag for the version                           |
+| `tagPrefix`             | `string`   | `"v"`                | Prefix for git tags (e.g., "v" creates "v1.2.3")         |
 
 ## CLI Commands
 
@@ -88,11 +88,13 @@ Create a `vbump.json` file in your project root:
 Bump version and execute git workflow.
 
 **Bump Type Options (required, choose one):**
+
 - `-M, --major` - Bump major version (x.0.0)
 - `-m, --minor` - Bump minor version (0.x.0)
 - `-p, --patch` - Bump patch version (0.0.x)
 
 **Additional Options:**
+
 - `--message <message>` - Custom commit message
 - `-s, --source <branch>` - Source branch (overrides config)
 - `-t, --targets <branches>` - Target branches, comma-separated (overrides config)
@@ -138,6 +140,7 @@ vbump --minor --tag-prefix "release-"
 Display the current version from package.json.
 
 **Options:**
+
 - `-f, --file <path>` - Package file path (default: package.json)
 
 **Aliases:** `vbump c`
@@ -168,18 +171,18 @@ When you run `vbump` with a bump type flag, the following workflow is executed:
 
 vbump is inspired by the simple `bump.mjs` script but offers:
 
-| Feature | bump.mjs | vbump |
-|---------|----------|----------|
-| TypeScript | ❌ | ✅ |
-| Type Safety | ❌ | ✅ |
-| CLI Framework | ❌ | ✅ Commander |
-| Config File | ❌ | ✅ vbump.json |
-| Dry Run Mode | ❌ | ✅ |
-| Customizable Branches | ❌ | ✅ |
-| Skip Options | ❌ | ✅ --skip-push, --skip-merge |
-| Multiple Target Branches | Limited | ✅ |
-| Error Handling | Basic | ✅ Comprehensive |
-| npm Package | ❌ | ✅ |
+| Feature                  | bump.mjs | vbump                        |
+| ------------------------ | -------- | ---------------------------- |
+| TypeScript               | ❌       | ✅                           |
+| Type Safety              | ❌       | ✅                           |
+| CLI Framework            | ❌       | ✅ Commander                 |
+| Config File              | ❌       | ✅ vbump.json                |
+| Dry Run Mode             | ❌       | ✅                           |
+| Customizable Branches    | ❌       | ✅                           |
+| Skip Options             | ❌       | ✅ --skip-push, --skip-merge |
+| Multiple Target Branches | Limited  | ✅                           |
+| Error Handling           | Basic    | ✅ Comprehensive             |
+| npm Package              | ❌       | ✅                           |
 
 ## Development
 
@@ -249,5 +252,6 @@ MIT
 ## Author
 
 Part of the @definitely-not-devs suite of tools, including:
+
 - [notegen](https://github.com/definitely-not-devs/notegen) - Release notes generator
 - vbump - Version bumping tool

@@ -111,7 +111,8 @@ program
         skipMerge: options.skipMerge || false,
         packageFile: options.file || config.packageFile || 'package.json',
         dryRun: options.dryRun || false,
-        createTag: options.tag !== undefined ? options.tag : (config.createTag ?? true),
+        createTag:
+          options.tag !== undefined ? options.tag : (config.createTag ?? true),
         tagPrefix: options.tagPrefix || config.tagPrefix || 'v',
       };
 

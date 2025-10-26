@@ -66,15 +66,9 @@ export async function initConfig(): Promise<void> {
     );
 
     // Git tagging
-    const createTag = await question(
-      rl,
-      'Create git tags? (Y/n): '
-    );
+    const createTag = await question(rl, 'Create git tags? (Y/n): ');
 
-    const tagPrefix = await question(
-      rl,
-      'Tag prefix (default: v): '
-    );
+    const tagPrefix = await question(rl, 'Tag prefix (default: v): ');
 
     // Build config
     const config: VBumpConfig = {

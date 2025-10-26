@@ -161,8 +161,12 @@ export async function bumpVersion(options: BumpOptions): Promise<VersionInfo> {
     console.log(`📦 Current version: ${currentVersion}`);
     console.log(`📦 New version: ${newVersion}`);
     console.log(`🔀 Source branch: ${branches.source}`);
-    console.log(`🎯 Target branches: ${branches.targets?.join(', ') || 'none'}`);
-    console.log(`🏷️  Create tag: ${createTag ? `${tagPrefix}${newVersion}` : 'no'}`);
+    console.log(
+      `🎯 Target branches: ${branches.targets?.join(', ') || 'none'}`
+    );
+    console.log(
+      `🏷️  Create tag: ${createTag ? `${tagPrefix}${newVersion}` : 'no'}`
+    );
     return { oldVersion: currentVersion, newVersion };
   }
 
@@ -197,7 +201,7 @@ export async function bumpVersion(options: BumpOptions): Promise<VersionInfo> {
   if (!skipPush) {
     console.log(`⬆️  Pushing to ${sourceBranch}...`);
     await execGit(['push', 'origin', sourceBranch]);
-    
+
     // Push tags
     if (createTag) {
       console.log(`⬆️  Pushing tags...`);
