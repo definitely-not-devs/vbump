@@ -44,7 +44,7 @@ export async function initConfig(): Promise<void> {
     // Source branch
     const sourceBranch = await question(
       rl,
-      'Source branch (default: current branch): '
+      'Source branch (leave empty to use current branch when running): '
     );
 
     // Target branches
@@ -56,7 +56,7 @@ export async function initConfig(): Promise<void> {
     // Commit message template
     const commitMessage = await question(
       rl,
-      'Commit message template (use {version} as placeholder, default: build: {version}): '
+      'Commit message template (use {version} as placeholder, default: chore(release): {version}): '
     );
 
     // Package file

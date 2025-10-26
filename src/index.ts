@@ -194,7 +194,7 @@ export async function bumpVersion(options: BumpOptions): Promise<VersionInfo> {
   await updatePackageVersion(newVersion, packageFile);
 
   // Commit changes
-  const message = commitMessage || `build: ${newVersion}`;
+  const message = commitMessage || `chore(release): ${newVersion}`;
   console.log(`💾 Committing changes: ${message}`);
   await execGit(['add', packageFile]);
   await execGit(['commit', '-m', message]);

@@ -63,7 +63,7 @@ Create a `vbump.json` file in your project root:
     "source": "develop",
     "targets": ["staging", "production"]
   },
-  "commitMessageTemplate": "build: {version}",
+  "commitMessageTemplate": "chore(release): {version}",
   "packageFile": "package.json",
   "createTag": true,
   "tagPrefix": "v"
@@ -72,14 +72,14 @@ Create a `vbump.json` file in your project root:
 
 ### Configuration Options
 
-| Option                  | Type       | Default              | Description                                              |
-| ----------------------- | ---------- | -------------------- | -------------------------------------------------------- |
-| `branches.source`       | `string`   | current branch       | Source branch where version bump occurs (optional)       |
-| `branches.targets`      | `string[]` | `[]`                 | Target branches to merge changes into                    |
-| `commitMessageTemplate` | `string`   | `"build: {version}"` | Commit message template (use `{version}` as placeholder) |
-| `packageFile`           | `string`   | `"package.json"`     | Path to package file                                     |
-| `createTag`             | `boolean`  | `true`               | Create git tag for the version                           |
-| `tagPrefix`             | `string`   | `"v"`                | Prefix for git tags (e.g., "v" creates "v1.2.3")         |
+| Option                  | Type       | Default                       | Description                                              |
+| ----------------------- | ---------- | ----------------------------- | -------------------------------------------------------- |
+| `branches.source`       | `string`   | current branch                | Source branch where version bump occurs (optional)       |
+| `branches.targets`      | `string[]` | `[]`                          | Target branches to merge changes into                    |
+| `commitMessageTemplate` | `string`   | `"chore(release): {version}"` | Commit message template (use `{version}` as placeholder) |
+| `packageFile`           | `string`   | `"package.json"`              | Path to package file                                     |
+| `createTag`             | `boolean`  | `true`                        | Create git tag for the version                           |
+| `tagPrefix`             | `string`   | `"v"`                         | Prefix for git tags (e.g., "v" creates "v1.2.3")         |
 
 ## CLI Commands
 
