@@ -94,8 +94,8 @@ program
       const bumpOptions = {
         bumpType,
         branches: {
-          source: options.source || config.branches?.source || 'develop',
-          targets: targets || ['UAT'],
+          source: options.source || config.branches?.source,
+          targets: targets || [],
         },
         commitMessage:
           options.message ||

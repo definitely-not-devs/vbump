@@ -9,7 +9,7 @@ const CONFIG_FILE = 'vbump.json';
 
 interface VBumpConfig {
   branches: {
-    source: string;
+    source?: string;
     targets: string[];
   };
   commitMessageTemplate?: string;
@@ -44,19 +44,19 @@ export async function initConfig(): Promise<void> {
     // Source branch
     const sourceBranch = await question(
       rl,
-      'Source branch (default: develop): '
+      'Source branch (default: current branch): '
     );
 
     // Target branches
     const targetsInput = await question(
       rl,
-      'Target branches (comma-separated, default: release): '
+      'Target branches (comma-separated, leave empty for none): '
     );
 
     // Commit message template
     const commitMessage = await question(
       rl,
-      'Commit message template (use {version} as placeholder, default: chore(release): {version}): '
+      'Commit message template (use {version} as placeholder, default: build: {version}): '
     );
 
     // Package file
@@ -73,12 +73,15 @@ export async function initConfig(): Promise<void> {
     // Build config
     const config: VBumpConfig = {
       branches: {
-        source: sourceBranch.trim() || 'develop',
         targets: targetsInput
           ? targetsInput.split(',').map((b) => b.trim())
-          : ['UAT'],
+          : [],
       },
     };
+
+    if (sourceBranch.trim()) {
+      config.branches.source = sourceBranch.trim();
+    }
 
     if (commitMessage.trim()) {
       config.commitMessageTemplate = commitMessage.trim();

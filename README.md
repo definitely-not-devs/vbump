@@ -61,7 +61,7 @@ Create a `vbump.json` file in your project root:
 {
   "branches": {
     "source": "develop",
-    "targets": ["UAT", "staging"]
+    "targets": ["staging", "production"]
   },
   "commitMessageTemplate": "build: {version}",
   "packageFile": "package.json",
@@ -74,8 +74,8 @@ Create a `vbump.json` file in your project root:
 
 | Option                  | Type       | Default              | Description                                              |
 | ----------------------- | ---------- | -------------------- | -------------------------------------------------------- |
-| `branches.source`       | `string`   | `"develop"`          | Source branch where version bump occurs                  |
-| `branches.targets`      | `string[]` | `["UAT"]`            | Target branches to merge changes into                    |
+| `branches.source`       | `string`   | current branch       | Source branch where version bump occurs (optional)       |
+| `branches.targets`      | `string[]` | `[]`                 | Target branches to merge changes into                    |
 | `commitMessageTemplate` | `string`   | `"build: {version}"` | Commit message template (use `{version}` as placeholder) |
 | `packageFile`           | `string`   | `"package.json"`     | Path to package file                                     |
 | `createTag`             | `boolean`  | `true`               | Create git tag for the version                           |
@@ -166,23 +166,6 @@ When you run `vbump` with a bump type flag, the following workflow is executed:
    - Merge source branch
    - Push to target branch
 9. 🔙 **Return** - Switch back to source branch
-
-## Comparison to bump.mjs
-
-vbump is inspired by the simple `bump.mjs` script but offers:
-
-| Feature                  | bump.mjs | vbump                        |
-| ------------------------ | -------- | ---------------------------- |
-| TypeScript               | ❌       | ✅                           |
-| Type Safety              | ❌       | ✅                           |
-| CLI Framework            | ❌       | ✅ Commander                 |
-| Config File              | ❌       | ✅ vbump.json                |
-| Dry Run Mode             | ❌       | ✅                           |
-| Customizable Branches    | ❌       | ✅                           |
-| Skip Options             | ❌       | ✅ --skip-push, --skip-merge |
-| Multiple Target Branches | Limited  | ✅                           |
-| Error Handling           | Basic    | ✅ Comprehensive             |
-| npm Package              | ❌       | ✅                           |
 
 ## Development
 

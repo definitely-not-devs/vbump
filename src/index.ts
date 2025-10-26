@@ -135,7 +135,7 @@ export async function getCurrentBranch(): Promise<string> {
 export async function bumpVersion(options: BumpOptions): Promise<VersionInfo> {
   const {
     bumpType,
-    branches = { source: 'develop', targets: ['UAT'] },
+    branches = { targets: [] },
     commitMessage,
     skipPush = false,
     skipMerge = false,
@@ -174,10 +174,19 @@ export async function bumpVersion(options: BumpOptions): Promise<VersionInfo> {
   console.log('🔄 Fetching latest changes...');
   await execGit(['fetch']);
 
-  // Switch to source branch and pull
-  const sourceBranch = branches.source || 'develop';
-  console.log(`🔀 Switching to ${sourceBranch}...`);
-  await execGit(['switch', sourceBranch]);
+  // Determine source branch (use current branch if not specified)
+  let sourceBranch: string;
+  if (branches.source) {
+    sourceBranch = branches.source;
+    const currentBranch = await getCurrentBranch();
+    if (currentBranch !== sourceBranch) {
+      console.log(`🔀 Switching to ${sourceBranch}...`);
+      await execGit(['switch', sourceBranch]);
+    }
+  } else {
+    sourceBranch = await getCurrentBranch();
+    console.log(`📍 Working on current branch: ${sourceBranch}`);
+  }
   await execGit(['pull']);
 
   // Update package.json
