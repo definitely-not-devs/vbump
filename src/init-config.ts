@@ -50,13 +50,13 @@ export async function initConfig(): Promise<void> {
     // Target branches
     const targetsInput = await question(
       rl,
-      'Target branches (comma-separated, default: UAT): '
+      'Target branches (comma-separated, default: release): '
     );
 
     // Commit message template
     const commitMessage = await question(
       rl,
-      'Commit message template (use {version} as placeholder, default: build: {version}): '
+      'Commit message template (use {version} as placeholder, default: chore(release): {version}): '
     );
 
     // Package file
