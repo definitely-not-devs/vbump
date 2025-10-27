@@ -65,7 +65,7 @@ program
   .option('--dry-run', 'Preview changes without executing')
   .option('--tag', 'Create git tag (enabled by default)')
   .option('--no-tag', 'Skip creating git tag')
-  .option('--tag-prefix <prefix>', 'Tag prefix (default: v)')
+  .option('--tag-prefix <prefix>', 'Tag prefix (default: none)')
   .action(async (options) => {
     try {
       // Determine bump type from flags
@@ -113,7 +113,7 @@ program
         dryRun: options.dryRun || false,
         createTag:
           options.tag !== undefined ? options.tag : (config.createTag ?? true),
-        tagPrefix: options.tagPrefix || config.tagPrefix || 'v',
+        tagPrefix: options.tagPrefix ?? config.tagPrefix ?? '',
       };
 
       const result = await bumpVersion(bumpOptions);

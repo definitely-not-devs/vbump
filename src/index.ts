@@ -142,7 +142,7 @@ export async function bumpVersion(options: BumpOptions): Promise<VersionInfo> {
     packageFile = 'package.json',
     dryRun = false,
     createTag = true,
-    tagPrefix = 'v',
+    tagPrefix = '',
   } = options;
 
   // Check if we're in a git repository
